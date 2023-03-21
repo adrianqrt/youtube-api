@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="index.css">
+   
+  
+ 
+    <title>yt api</title>
+  </head>
+  <h1 id="tytul">10 najopularniejszych filmow w polsce</h1>
+  
+  <div id="yt">
+    
+    </div>
+  <body>
+    
+
+    
+    <script>
+ 
+      const api_url = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=PL&key=AIzaSyCilB8yZlhlgtKlbRlOCUFUuKcp3ICtEzE';
+      
+      
+   
+     
+
+      async function getYT() {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        const { title } = data;
+        let videos = data.items
+        let thumbnails = document.querySelector("yt")
+        for(video of videos){
+          console.log(video.snippet.title)
+         document.getElementById('yt').innerHTML += `
+
+         <h2 id="tytul1">${video.snippet.title}</h2></br>
+         <h3 id="kanal">kanł:${video.snippet.channelTitle}</h3></br>
+         <h3 id="wysw">wyświetleń:${video.statistics.viewCount}</h3></br>
+         <h3 id="like">polubień:${video.statistics.likeCount}</h3></br>
+         <h3 id="kom">komentarzy:${video.statistics.commentCount}</h3></br>
+          <img src="${video.snippet.thumbnails.standard.url}"></br>
+          `
+          
+         
+        }
+      }
+
+
+
+      getYT();
+      
+      ///setInterval(getISS, 1000);
+     
+      
+    </script>
+  </body>
+</html>

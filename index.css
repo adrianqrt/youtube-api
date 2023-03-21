@@ -1,0 +1,28 @@
+html{
+  background: linear-gradient(85deg, red , blue, purple);
+}
+#yt{
+  text-align: center;
+}
+#tytul{
+  text-align: center;
+}
+#tytul1{
+  text-align: center;
+}
+#kanal{
+  display: inline; 
+	background: linear-gradient(85deg , blue, purple);
+}
+#wysw{
+  display: inline; 
+  background: linear-gradient(85deg , blue, purple);
+}
+#like{
+  display: inline; 
+  background: linear-gradient(85deg , blue, purple);
+}
+#kom{
+  display: inline; 
+  background: linear-gradient(85deg , blue, purple);
+}
