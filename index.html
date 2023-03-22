@@ -16,25 +16,31 @@
     
     </div>
   <body>
-    
 
+    
+    <button type="button" onclick="usa();getYT()">wyświetl filmy ze stanow</button>
     
     <script>
- 
-      const api_url = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=PL&key=AIzaSyCilB8yZlhlgtKlbRlOCUFUuKcp3ICtEzE';
+      var api_url = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=PL&key=AIzaSyCilB8yZlhlgtKlbRlOCUFUuKcp3ICtEzE';
+
+
+
+async function usa() {
+         api_url = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=US&key=AIzaSyCilB8yZlhlgtKlbRlOCUFUuKcp3ICtEzE';
+};
       
-      
-   
-     
 
       async function getYT() {
+
+
         const response = await fetch(api_url);
         const data = await response.json();
-        const { title } = data;
         let videos = data.items
-        let thumbnails = document.querySelector("yt")
+
+
+
         for(video of videos){
-          console.log(video.snippet.title)
+          
          document.getElementById('yt').innerHTML += `
 
          <h2 id="tytul1">${video.snippet.title}</h2></br>
@@ -43,11 +49,7 @@
          <h3 id="like">polubień:${video.statistics.likeCount}</h3></br>
          <h3 id="kom">komentarzy:${video.statistics.commentCount}</h3></br>
          <a href="https://www.youtube.com/watch?v=${video.id}"><img src="${video.snippet.thumbnails.standard.url}" ></br></a>
-          
           `
-
-          
-         
         }
       }
 
@@ -55,9 +57,10 @@
 
       getYT();
       
-      ///setInterval(getISS, 1000);
+    
      
       
     </script>
+    
   </body>
 </html>
